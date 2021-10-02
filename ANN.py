@@ -60,7 +60,7 @@ if __name__ == "__main__":
 
         logging.info(">>>>>>>>>>>>>>>>>>>>>>>>> Starting of Script >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>")
         main(data, LOSS_FUNCTION, OPTIMIZER, METRICS, EPOCHS, BATCH_SIZE, VAL_BATCH_SIZE )
-        logging.info(" <<<<<<<<<<<<<<<<<<<< Model trained successfully <<<<<<<<<<<<<<<<<<<<<<<<<<<<")
+        logging.info(" <<<<<<<<<<<<<<<<<<<< Script Completed <<<<<<<<<<<<<<<<<<<<<<<<<<<<")
 
     except Exception as e:
         logging.exception(e)

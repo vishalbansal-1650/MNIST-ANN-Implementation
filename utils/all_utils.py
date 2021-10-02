@@ -55,7 +55,6 @@ def save_plot(model_history,plotname):
 
     df.plot(figsize=(10,8))
     plt.grid(True)
-    plt.show()
 
     logging.info("Saving the model performance plot")
     plot_dir = 'plots'
