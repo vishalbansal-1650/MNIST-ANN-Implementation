@@ -6,6 +6,7 @@ author : Vishal Bansal
 
 import logging
 import tensorflow as tf
+import pandas as pd
 
 
 def build_model_architecture(n1_input,n2_input,n_class,l1_units,l2_units):
@@ -31,8 +32,8 @@ def build_model_architecture(n1_input,n2_input,n_class,l1_units,l2_units):
     ]
     
     model_clf = tf.keras.models.Sequential(layers=LAYERS)
-    logging.info("Model architecture: \n")
-    logging.info(model_clf.summary())
+    logging.info(f"Model architecture: \n{model_clf.summary()}")
+    
 
     return model_clf
 
@@ -65,6 +66,7 @@ def train_model(model_clf,LOSS_FUNCTION,OPTIMIZER,METRICS,EPOCHS,x_train,y_train
     logging.info("Training the model on train data set") 
     model_history = model_clf.fit(x=x_train, y=y_train, epochs=EPOCHS, validation_data=VALIDATION,batch_size=BATCH_SIZE, validation_batch_size=VAL_BATCH_SIZE)
 
+    logging.info(f"Model training details: \n{pd.DataFrame(model_history.history)}")
     logging.info("Model Trained successfully")
 
     return model_history
