@@ -4,7 +4,7 @@ author : Vishal Bansal
 """
 
 from utils.all_utils import get_dataset,save_model,save_plot
-from utils.model import build_model_architecture, build_model
+from utils.model import build_model_architecture, train_model
 import logging
 import os
 import tensorflow as tf
@@ -36,7 +36,7 @@ def main(data,LOSS_FUNCTION,OPTIMIZER,METRICS,EPOCHS, BATCH_SIZE, VAL_BATCH_SIZE
     l2_units = 100
 
     model_clf = build_model_architecture(n1_input, n2_input, n_class, l1_units, l2_units)
-    model_history = build_model(model_clf,LOSS_FUNCTION,OPTIMIZER,METRICS,EPOCHS,x_train,y_train,x_valid,y_valid,BATCH_SIZE,VAL_BATCH_SIZE)
+    model_history = train_model(model_clf,LOSS_FUNCTION,OPTIMIZER,METRICS,EPOCHS,x_train,y_train,x_valid,y_valid,BATCH_SIZE,VAL_BATCH_SIZE)
 
     logging.info("Making Prediction on Test Dataset")
     model_clf.evaluate(x=x_test, y=y_test,batch_size=BATCH_SIZE)

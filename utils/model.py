@@ -37,7 +37,7 @@ def build_model_architecture(n1_input,n2_input,n_class,l1_units,l2_units):
     return model_clf
 
 
-def build_model(model_clf,LOSS_FUNCTION,OPTIMIZER,METRICS,EPOCHS,x_train,y_train,x_valid,y_valid,BATCH_SIZE,VAL_BATCH_SIZE):
+def train_model(model_clf,LOSS_FUNCTION,OPTIMIZER,METRICS,EPOCHS,x_train,y_train,x_valid,y_valid,BATCH_SIZE,VAL_BATCH_SIZE):
     """to fit model on train datset 
 
     Args:
