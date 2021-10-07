@@ -7,7 +7,7 @@ author : Vishal Bansal
 import logging
 import tensorflow as tf
 import pandas as pd
-
+import io
 
 def build_model_architecture(n1_input,n2_input,n_class,l1_units,l2_units):
     """ To define model architecture for ANN
@@ -31,8 +31,13 @@ def build_model_architecture(n1_input,n2_input,n_class,l1_units,l2_units):
         tf.keras.layers.Dense(units=n_class, activation='softmax', name='outputlayer')
     ]
     
+    def _get_model_summary(model):
+        with io.StringIO() as stream:
+            model.summary(print_fn=lambda x: stream.write(f"{x}\n"))
+            summary_str = stream.getvalue()
+        return summary_str
     model_clf = tf.keras.models.Sequential(layers=LAYERS)
-    logging.info(f"Model architecture: \n{model_clf.summary()}")
+    logging.info(f"Model architecture: \n{_get_model_summary(model_clf)}")
     
 
     return model_clf
